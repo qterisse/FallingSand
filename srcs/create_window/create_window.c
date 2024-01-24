@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 17:17:42 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:46:53 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,37 @@ void	create_image(t_vars *vars)
 			&(vars->img->pixel_bits),
 			&(vars->img->line_bytes),
 			&(vars->img->endian));
+	draw_grid(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->addr, 0, 0);
+}
+
+void	update_sand(t_vars *vars)
+{
+	int	i;
+	int	j;
+
+	i = GRID_HEIGHT - 2;
+	while (i >= 0)
+	{
+		j = GRID_WIDTH - 1;
+		while (j >= 0)
+		{
+			if (vars->grid[i][j] && !vars->grid[i + 1][j])
+			{
+				vars->grid[i][j] = 0;
+				vars->grid[i + 1][j] = 1;
+			}
+			j--;
+		}
+		i--;
+	}
 }
 
 int	loop(t_vars *vars)
 {
-	// update_image(sand);
-	// create_image(vars->grid, vars);
+	update_sand(vars);
+	draw_grid(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->addr, 0, 0);
 }
 
 int	create_window(void)
@@ -49,15 +73,10 @@ int	create_window(void)
 	t_vars	vars;
 
 	init_window(&vars);
-	printf("1\n");
 	create_image(&vars);
-	printf("2\n");
 	mlx_hook(vars.win, 04 ,(1L<<2), on_mouse_down_hook, &vars);
 	mlx_hook(vars.win, 05 ,(1L<<3), on_mouse_up_hook, &vars);
 	mlx_hook(vars.win, 06 ,(1L<<6), on_mouse_move_hook, &vars);
-	// mlx_mouse_hook(vars.win, on_mouse_down_hook, &vars);
-	printf("3\n");
 	mlx_loop_hook(vars.mlx, loop, &vars);
-	printf("4\n");
 	mlx_loop(vars.mlx);
 }

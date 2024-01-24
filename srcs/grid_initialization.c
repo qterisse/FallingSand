@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grid_utils.c                                       :+:      :+:    :+:   */
+/*   grid_initialization.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
+/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:34 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/24 16:02:27 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/24 17:42:53 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	free_grid(vartype **grid, int height)
 vartype	**init_grid(int width, int height)
 {
 	vartype	**grid;
-	int	y;
+	int		y;
+	int		x;
 
 	y = 0;
 	grid = malloc(sizeof(vartype *) * height);
@@ -36,6 +37,9 @@ vartype	**init_grid(int width, int height)
 		grid[y] = malloc(sizeof(vartype) * width);
 		if (!grid[y])
 			return (free_grid(grid, y), NULL);
+		x = 0;
+		while (x < width)
+			grid[y][x++] = 0;
 		y++;
 	}
 	return (grid);

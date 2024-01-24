@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 17:17:43 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 17:18:09 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:46:41 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,5 @@ void	on_mouse_move_hook(int x, int y, void *vars)
 
 	tmp = vars;
 	if (tmp->mouse_down == 1)
-	{
 		tmp->grid[(y * GRID_WIDTH) / WIDTH][(x * GRID_WIDTH) / WIDTH] = 1;
-	}
 }
