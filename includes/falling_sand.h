@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:43 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 15:53:36 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include <unistd.h>
 # include <mlx.h>
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <string.h>
+# include <errno.h>
+# include <math.h>
+# include <stdint.h>
 
 typedef char vartype;
 
@@ -32,12 +41,7 @@ typedef struct s_vars
 	void		*mlx;
 	void		*win;
 	t_img_vars	*img;
-}				t_vars;
-
-typedef struct s_param
-{
-	t_vars		*vars;
 	vartype		**grid;
-}			t_param;
+}				t_vars;
 
 #endif
