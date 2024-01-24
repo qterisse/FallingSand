@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   falling_sand.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 16:05:02 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 16:46:37 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@
 # include <errno.h>
 # include <math.h>
 # include <stdint.h>
+
+# define GRID_WIDTH 100
+# define GRID_HEIGHT 100
+
+# define WIDTH 1000
+# define HEIGHT 1000
 
 typedef char vartype;
 
