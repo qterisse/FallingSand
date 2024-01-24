@@ -6,13 +6,13 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:34 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/24 15:50:56 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/24 15:54:29 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "falling_sand.h"
 
-void	free_grid(int **grid, int height)
+void	free_grid(vartype **grid, int height)
 {
 	int	i;
 
@@ -22,18 +22,18 @@ void	free_grid(int **grid, int height)
 	free(grid);
 }
 
-int	**init_grid(int **grid, int width, int height)
+vartype	**init_grid(int width, int height)
 {
-	int	**grid;
+	vartype	**grid;
 	int	y;
 
 	y = 0;
-	grid = malloc(sizeof(int *) * height);
+	grid = malloc(sizeof(vartype *) * height);
 	if (!grid)
 		return (NULL);
 	while (y < height)
 	{
-		grid[y] = malloc(sizeof(int) * width);
+		grid[y] = malloc(sizeof(vartype) * width);
 		if (!grid[y])
 			return (free_grid(grid, y), NULL);
 		y++;
