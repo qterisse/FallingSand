@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 16:11:40 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 17:18:24 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,16 @@ typedef struct s_vars
 	void		*win;
 	t_img_vars	*img;
 	vartype		**grid;
+	int			mouse_down;
 }				t_vars;
 
-void	free_grid(vartype **grid, int height);
-vartype	**init_grid(int width, int height);
+void		free_grid(vartype **grid, int height);
+vartype		**init_grid(int width, int height);
+int			create_window(void);
+
+void	on_mouse_move_hook(int x, int y, void *vars);
+void	on_mouse_up_hook(int button, int x, int y, void *vars);
+void	on_mouse_down_hook(int button, int x, int y, void *vars);
+
 
 #endif

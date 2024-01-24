@@ -1,1 +1,4 @@
-SRCS= falling_sand.c
+SRCS	=	falling_sand.c \
+			create_window/create_window.c \
+			grid_initialization.c \
+			hooks.c
