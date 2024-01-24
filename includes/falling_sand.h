@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   falling_sand.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:43 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/24 16:03:03 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ typedef struct s_param
 	t_vars		*vars;
 	vartype		**grid;
 }			t_param;
+
+void	free_grid(vartype **grid, int height);
+vartype	**init_grid(int width, int height);
 
 #endif
