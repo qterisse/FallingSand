@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 13:54:07 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:34:20 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 # define KEY_SPACE 32
 
-typedef char vartype;
+typedef int vartype;
 
 typedef struct s_img_vars
 {
@@ -60,7 +60,7 @@ typedef struct s_vars
 	vartype		**grid;
 	int			mouse_down;
 
-	t_color		*color;
+	int			color;
 	int			size;
 }				t_vars;
 
@@ -69,7 +69,7 @@ vartype		**init_grid(int width, int height);
 int			create_window(void);
 void		draw_grid(t_vars *vars);
 
-void	on_mouse_move_hook(int x, int y, void *vars);
+void	on_mouse_move_hook(int x, int y, t_vars *vars);
 void	on_mouse_up_hook(int button, int x, int y, void *vars);
 void	on_mouse_down_hook(int button, int x, int y, void *vars);
 void	key_hook(int keycode, t_vars *vars);

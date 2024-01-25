@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 13:54:38 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/25 14:28:10 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_vars	*init_window(t_vars *vars)
 		return (free(vars->img), NULL);
 	vars->mouse_down = 0;
 	vars->size = 1;
+	vars->color = 0xFFFFFF;
 	return (vars);
 }
 
@@ -51,10 +52,10 @@ void	update_sand(t_vars *vars)
 		j = GRID_WIDTH - 1;
 		while (j >= 0)
 		{
-			if (vars->grid[i][j] && !vars->grid[i + 1][j])
+			if (vars->grid[i][j] != 0 && vars->grid[i + 1][j] == 0)
 			{
+				vars->grid[i + 1][j] = vars->grid[i][j];
 				vars->grid[i][j] = 0;
-				vars->grid[i + 1][j] = 1;
 			}
 			j--;
 		}

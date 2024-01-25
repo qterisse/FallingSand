@@ -3,39 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   draw_grid.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 16:13:37 by quteriss          #+#    #+#             */
-/*   Updated: 2024/01/24 17:39:30 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/25 14:29:33 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "falling_sand.h"
+#include "../includes/falling_sand.h"
 
-void	put_pixel(t_img_vars *img, int x, int y, unsigned char color)
+void	put_pixel(t_img_vars *img, int x, int y, int color)
 {
-	int	pixel;
+	char	*pixel;
 
 	if (x > WIDTH || x < 0 || y > HEIGHT || y < 0)
 		return ;
-	pixel = (y * img->line_bytes) + (x * (img->pixel_bits / 8));
-	if (img->endian == 1)
-	{
-		img->buffer[pixel + 0] = (unsigned char) 255;
-		img->buffer[pixel + 1] = color;
-		img->buffer[pixel + 2] = color;
-		img->buffer[pixel + 3] = color;
-	}
-	else if (img->endian == 0)
-	{
-		img->buffer[pixel + 0] = color;
-		img->buffer[pixel + 1] = color;
-		img->buffer[pixel + 2] = color;
-		img->buffer[pixel + 3] = (unsigned char) 255;
-	}
+	pixel = img->buffer + (y * img->line_bytes) + (x * (img->pixel_bits / 8));
+	*(unsigned int*)pixel = color;
 }
 
-void	draw_rectangle(t_img_vars *img, int x, int y, int size, int filled)
+void	draw_rectangle(t_img_vars *img, int x, int y, int size, int color)
 {
 	int	i;
 	int	j;
@@ -45,7 +32,7 @@ void	draw_rectangle(t_img_vars *img, int x, int y, int size, int filled)
 	{
 		j = 0;
 		while (j < size)
-			put_pixel(img, x + (j++), y + i, 255 * filled);
+			put_pixel(img, x + (j++), y + i, color);
 		i++;
 	}
 }
