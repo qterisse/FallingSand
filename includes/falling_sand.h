@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 17:22:00 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/25 13:41:34 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_vars
 	t_img_vars	*img;
 	vartype		**grid;
 	int			mouse_down;
+	int			size;
 }				t_vars;
 
 void		free_grid(vartype **grid, int height);

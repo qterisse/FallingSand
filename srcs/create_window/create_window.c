@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 17:46:53 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/25 13:47:22 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_vars	*init_window(t_vars *vars)
 	if (!vars->grid)
 		return (free(vars->img), NULL);
 	vars->mouse_down = 0;
+	vars->size = 1;
 	return (vars);
 }
 
