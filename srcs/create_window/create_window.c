@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 13:41:56 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:54:38 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_vars	*init_window(t_vars *vars)
 	if (!vars->grid)
 		return (free(vars->img), NULL);
 	vars->mouse_down = 0;
+	vars->size = 1;
 	return (vars);
 }
 

@@ -6,7 +6,7 @@
 /*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 13:52:43 by quteriss         ###   ########.fr       */
+/*   Updated: 2024/01/25 13:54:07 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_vars
 	int			mouse_down;
 
 	t_color		*color;
+	int			size;
 }				t_vars;
 
 void		free_grid(vartype **grid, int height);
