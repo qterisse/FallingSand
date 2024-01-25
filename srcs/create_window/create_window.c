@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/24 17:46:53 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/25 13:41:56 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	create_window(void)
 	mlx_hook(vars.win, 04 ,(1L<<2), on_mouse_down_hook, &vars);
 	mlx_hook(vars.win, 05 ,(1L<<3), on_mouse_up_hook, &vars);
 	mlx_hook(vars.win, 06 ,(1L<<6), on_mouse_move_hook, &vars);
+	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop_hook(vars.mlx, loop, &vars);
 	mlx_loop(vars.mlx);
 }
