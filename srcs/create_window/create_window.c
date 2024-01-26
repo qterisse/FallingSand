@@ -6,7 +6,7 @@
 /*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:32:45 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 14:29:29 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/26 10:42:23 by panger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_vars	*init_window(t_vars *vars)
 		return (free(vars->img), NULL);
 	vars->mouse_down = 0;
 	vars->size = 1;
+	vars->color = 0xFFFFFF;
 	return (vars);
 }
 
@@ -51,10 +52,10 @@ void	update_sand(t_vars *vars)
 		j = GRID_WIDTH - 1;
 		while (j >= 0)
 		{
-			if (vars->grid[i][j] && !vars->grid[i + 1][j])
+			if (vars->grid[i][j] != 0 && vars->grid[i + 1][j] == 0)
 			{
+				vars->grid[i + 1][j] = vars->grid[i][j];
 				vars->grid[i][j] = 0;
-				vars->grid[i + 1][j] = 1;
 			}
 			j--;
 		}
@@ -78,6 +79,7 @@ int	create_window(void)
 	mlx_hook(vars.win, 04 ,(1L<<2), on_mouse_down_hook, &vars);
 	mlx_hook(vars.win, 05 ,(1L<<3), on_mouse_up_hook, &vars);
 	mlx_hook(vars.win, 06 ,(1L<<6), on_mouse_move_hook, &vars);
+	mlx_key_hook(vars.win, key_hook, &vars);
 	mlx_loop_hook(vars.mlx, loop, &vars);
 	mlx_loop(vars.mlx);
 }

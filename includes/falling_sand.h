@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   falling_sand.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: panger <panger@student.42.fr>              +#+  +:+       +#+        */
+/*   By: quteriss <quteriss@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 15:29:15 by panger            #+#    #+#             */
-/*   Updated: 2024/01/25 13:41:34 by panger           ###   ########.fr       */
+/*   Updated: 2024/01/25 15:34:20 by quteriss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 # define WIDTH 1000
 # define HEIGHT 1000
 
-typedef char vartype;
+# define KEY_SPACE 32
+
+typedef int vartype;
 
 typedef struct s_img_vars
 {
@@ -42,6 +44,14 @@ typedef struct s_img_vars
 	char	*buffer;
 }			t_img_vars;
 
+typedef struct	s_color
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	a;
+}				t_color;
+
 typedef struct s_vars
 {
 	void		*mlx;
@@ -49,6 +59,8 @@ typedef struct s_vars
 	t_img_vars	*img;
 	vartype		**grid;
 	int			mouse_down;
+
+	int			color;
 	int			size;
 }				t_vars;
 
@@ -57,9 +69,9 @@ vartype		**init_grid(int width, int height);
 int			create_window(void);
 void		draw_grid(t_vars *vars);
 
-void	on_mouse_move_hook(int x, int y, void *vars);
+void	on_mouse_move_hook(int x, int y, t_vars *vars);
 void	on_mouse_up_hook(int button, int x, int y, void *vars);
 void	on_mouse_down_hook(int button, int x, int y, void *vars);
-
+void	key_hook(int keycode, t_vars *vars);
 
 #endif
